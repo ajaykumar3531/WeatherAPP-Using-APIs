@@ -1,0 +1,194 @@
+<html lang="en">
+    <head>
+        <!-- Meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Weather Application Using API - Check the weather for various cities.">
+        <meta name="keywords" content="weather, API, cities, temperature">
+        <meta name="author" content="Ajaykumar Yechuri">
+        <title>Weather Application Using API</title>
+        
+        <!-- Links -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    </head>
+    
+<body class="bg-gray-1000">
+    <div class="container" >
+        <div class="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br
+        from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400" id="background">
+       
+        <div class="flex items-center justify-around my-6">
+            <button class="text-white text-lg font-medium" id="Hyderabad">Hyderbad</button> 
+            <button class="text-white text-lg font-medium" id="Bangalore">Bangalore</button> 
+            <button class="text-white text-lg font-medium" id="Nuzvid">Nuzvid</button> 
+            <button class="text-white text-lg font-medium" id="Visakhapatnam">Vishakapatnam</button>  
+            <button class="text-white text-lg font-medium" id="Tirupati">Tirupati</button> 
+        </div>
+
+
+        <div class="flex flex-row justify-center my-6">
+            <div class="flex flex-row w-3/4 items-center justify-center">
+                <input type="text" id="cityinput" placeholder="Search for city!" class="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase">
+                
+                <button class="text-white cursor-pointer transition ease-out hover:scale-125 text-xl" id="search"><i class="uil uil-search mx-1"></i></button>
+
+                <div class="flex flex-row w=1/4 items-center justify-center ">
+                    <button class="text-white cursor-pointer transition ease-out hover:scale-125 text-xl" id="celsius">
+                        °C
+                    </button>
+                    <p class="text-xl text-white mx-1">|</p>
+                    <button class="text-white cursor-pointer transition ease-out hover:scale-125 text-xl" id="fahrenheit">
+                        °F
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="flex items-center justify-center my-6">
+                <p class="text-white text-xl font-extralight" id="datetime">
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center my-3 flex-col">
+                <p class="text-white text-3xl font-medium" id="timeZone"></p>
+                <p class="text-white font-medium py-4" id="main"></p>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex items-center justify-between my-6">
+                <p class="text-7xl text-white" ><img src="" alt="" id="imageIcon"></p>
+                <p class="text-5xl text-white" id="tem"></p>
+                <div class="flex items-center justify-center flex-col">
+                    <p class="font-medium ml-1 text-white font-light text-sm"><i class="uil uil-temperature-half"></i><span id="feels_like"></span></p>
+                    <p  class="font-medium ml-1 text-white font-light text-sm"><i class="uil uil-tear"></i><span id="humidity"> </span></p>
+                    <p  class="font-medium ml-1 text-white font-light text-sm"><i class="uil uil-wind"></i><span id="windspeed"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex items-center justify-between my-6">
+                <div class="flex items-center justify-between ">
+                    <i class="uil uil-sun font-medium ml-1 text-white "></i>
+                    <p class="font-medium ml-1 text-white font-light text-sm"><span id="sunrise"></span></p>
+                    <p class="font-medium ml-4 text-white ">|</p>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <i class="uil uil-sunset font-medium ml-1 text-white "></i>
+                    <p class="font-medium ml-1 text-white font-light text-sm"><span id="sunset"></span></p>
+                    <p class="font-medium ml-4 text-white ">|</p>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <i class="uil uil-arrow-up font-medium ml-1 text-white "></i>
+                    <p class="font-medium ml-1 text-white font-light text-sm"><span id="high"></span></p>
+                    <p class="font-medium ml-4 text-white ">|</p>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <i class="uil uil-arrow-down font-medium ml-1 text-white"></i>
+                    <p class="font-medium ml-1 text-white font-light text-sm"><span id="low"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly forcast -->
+
+        <div>
+            <div>
+                <div class="flex items-center justify-center ">
+                    <div class="text-white font-medium uppercase my-5">Hourly Forecast</div>
+                </div>         
+                <hr class="my-3">
+            <div>
+    
+                <div class="flex items-center justify-between text-white">
+    
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="time1">3:00PM</p>
+                        <p class="text-5xl "><img src="" alt="" id="img1"><i class="uil uil-cloud-meatball"></i></p>
+                        <p class=" text-sm" id="temp1">28°C</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="time2">3:30PM</p>
+                        <p class="text-5xl "><img src="" alt="" id="img2"><i class="uil uil-cloud-sun-rain"></i></p>
+                        <p class=" text-sm" id="temp2">30°C</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="time3">4:00PM</p>
+                        <p class="text-5xl "><img src="" alt="" id="img3"><i class="uil uil-clouds"></i></p>
+                        <p class=" text-sm" id="temp3">26°C</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="time4">4:30PM</p>
+                        <p class="text-5xl "><img src="" alt="" id="img4"><i class="uil uil-cloud-meatball"></i></p>
+                        <p class=" text-sm" id="temp4">29°C</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="time5">5:00PM</p>
+                        <p class="text-5xl "><img src="" alt="" id="img5"><i class="uil uil-cloud-wind"></i></p>
+                        <p class=" text-sm" id="temp5">24°C</p>
+                    </div>
+                    
+                </div>
+        </div>
+
+        <!-- Daily Forecast -->
+
+        <div>
+            <div>
+                <div class="flex items-center justify-center ">
+                    <div class="text-white font-medium uppercase my-5">Daily Forecast</div>
+                </div>         
+                <hr class="my-3">
+            <div>
+    
+                <div class="flex items-center justify-between text-white">
+    
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="day1">FRI</p>
+                        <p class="text-5xl "><img src="" alt="" id="dayIcon1"><i class="uil uil-windy"></i></p>
+                        <p class=" text-sm" id="dayTemp1">29°C</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="day2">SAT</p>
+                        <p class="text-5xl "><img src="" alt="" id="dayIcon2"><i class="uil uil-cloud-sun"></i></p>
+                        <p class=" text-sm" id="dayTemp2">32°C</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="day3">SUN</p>
+                        <p class="text-5xl "><img src="" alt="" id="dayIcon3"><i class="uil uil-cloud-rain"></i></p>
+                        <p class=" text-sm" id="dayTemp3">34°C</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="day4">MON</p>
+                        <p class="text-5xl "><img src="" alt="" id="dayIcon4"><i class="uil uil-cloud-wind"></i></p>
+                        <p class=" text-sm" id="dayTemp4">29°C</p>
+                    </div>
+                    
+                    <div class ="flex flex-col items-center justify-center">
+                        <p class=" text-sm" id="day5">TUES</p>
+                        <p class="text-5xl "><img src="" alt="" id="dayIcon5"><i class="uil uil-windy"></i></p>
+                        <p class=" text-sm" id="dayTemp5">33°C</p>
+                    </div>
+                    
+                    
+                </div>
+        </div>
+    </div>
+    <!-- WeatherService.js was linked here. -->
+    <script src="WeatherService.js"></script>
+</body>
+</html>
