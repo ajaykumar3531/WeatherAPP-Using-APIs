@@ -1,131 +1,7 @@
 
 
  
-//const apikey = 'c53550ab28e638339d8c8513bebe03b9'; //this is premium key which is exceeded for today useage
-// var mainFunction=(city)=>{
-//     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error("Network response was not ok!");
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log(data)
-//         const lon = data.coord.lon;
-//         const lat = data.coord.lat;
-//         return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apikey}`);
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error("Network response was not ok!");
-//         }
-//         return response.json();
-
-//     })
-//     .then(data => {
-//         console.log(data);
-//         // For timezone
-//         const time = data.timezone;
-//         const timezoneElement = document.getElementById('timeZone'); 
-//         timezoneElement.innerHTML = city;
-
-//         // for temprature
-//         const tempdeg=data.current.temp;
-//         const kelvinTemp=273.15;
-//         const degrees=tempdeg - kelvinTemp ;
-//         const rounded=degrees.toFixed(0)
-//         const temdegElement=document.getElementById('tem');
-//         temdegElement.innerHTML=rounded+"°";
-
-//         if (degrees > 30) {
-//             document.getElementById("background").style.backgroundImage = 'linear-gradient(to bottom,#ff9933, #ff8000)';
-//         } else {
-//             document.getElementById('background').style.backgroundImage = '';
-//         }
-    
-
-//         //for main
-//         const main = data.current.weather[0].main; 
-//         const mainWithoutQuotes = main.slice(0,);
-//         const mainElement = document.getElementById('main');
-//         mainElement.innerHTML = mainWithoutQuotes; 
-
-//         //real feels temprature
-//         const feelsLikeKelvin = data.current.feels_like;  
-//         const feelsdegrees = feelsLikeKelvin - kelvinTemp; 
-//         const feelsrounded = feelsdegrees.toFixed(0);
-//         const feelsElement = document.getElementById('feels_like');
-//         feelsElement.innerHTML =  `Real feel: ${feelsrounded}°`;
-
-//         //for humidity
-//         const humidityElement = document.getElementById('humidity');
-//         humidityElement.innerHTML =  `Humidity: ${data.current.humidity}%`;
-
-//         //for windspeed
-//         const windSpeed = data.current.wind_speed;
-//         const windspeedElement = document.getElementById('windspeed');
-//         windspeedElement.innerHTML = `Wind Speed: ${windSpeed} km/h`;
-
-
-//         //for current time and date and tyear
-//         const timestamp = data.current.dt;
-//         const date = new Date(timestamp * 1000);
-//         const monthNames = [
-//             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-//         ];
-//         const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
-//         const dayOfMonth = date.getDate();
-//         const year = date.getFullYear();
-//         const monthName = monthNames[date.getMonth()];
-//         const hours = date.getHours();
-//         const minutes = date.getMinutes();
-//         const ampm = hours >= 12 ? 'PM' : 'AM';
-//         const formattedHours = hours % 12 || 12; // Convert to 12-hour format
-//         const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${monthName} ${year} | Local time: ${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
-//         const datetimeElement = document.getElementById('datetime');
-//         datetimeElement.innerHTML = formattedDate;
-
-//         //for sunrise
-//         const sunriseTimestamp = data.current.sunrise;
-//         const sunriseDate = new Date(sunriseTimestamp * 1000);
-//         const options = {
-//             hour: '2-digit',minute: '2-digit',hour12: true};
-//         const sunriseTimeFormatted = sunriseDate.toLocaleTimeString([], options);
-//         const sunriseElement = document.getElementById('sunrise');
-//         sunriseElement.innerHTML = `Rise: ${sunriseTimeFormatted}`;
-
-//         //for sunset
-//         const sunsetTimestamp = data.current.sunset;
-//         const sunsetDate = new Date(sunsetTimestamp * 1000);
-//         const options1 = {
-//             hour: '2-digit',minute: '2-digit',hour12: true};
-//         const sunsetTimeFormatted = sunsetDate.toLocaleTimeString([], options1);
-//         const sunsetElement = document.getElementById('sunset');
-//         sunsetElement.innerHTML = `Set: ${sunsetTimeFormatted}`;
-
-//         //for image
-//         const weatherIconCode = data.current.weather[0].icon;
-//         const imgElement = document.getElementById('imageIcon');
-//         imgElement.src = `http://openweathermap.org/img/wn/${weatherIconCode}.png`;
-
-//         //for hourly data
-//         fetchAndDisplayHourlyData(data);
-
-//         //for daily data
-//         fetchAndDisplayDailyData(data);
-
-//         fetchAndDisplayMaxTemperature(data);
-//         fetchAndDisplayMinTemperature(data);
-
-        
-//     })
-//     .catch(error => {
-//         console.log("Error occurred:", error);
-//     });
-// }
-
-const apikey = '0e707606af8a465626142a75310654ec';//this is free key
+const apikey = 'c53550ab28e638339d8c8513bebe03b9'; //this is premium key which is exceeded for today useage
 var mainFunction=(city)=>{
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
     .then(response => {
@@ -135,20 +11,32 @@ var mainFunction=(city)=>{
         return response.json();
     })
     .then(data => {
+        console.log(data)
+        const lon = data.coord.lon;
+        const lat = data.coord.lat;
+        return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apikey}`);
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok!");
+        }
+        return response.json();
+
+    })
+    .then(data => {
         console.log(data);
         // For timezone
         const time = data.timezone;
         const timezoneElement = document.getElementById('timeZone'); 
         timezoneElement.innerHTML = city;
-        
-        //for temprature
-        const tempdeg = data.main.temp;
-        const kelvinTemp = 273.15;
-        const degrees = tempdeg - kelvinTemp;
-        const rounded = degrees.toFixed(0);
-        // Display the temperature in the HTML element with id "tem"
-        const temdegElement = document.getElementById('tem');
-        temdegElement.innerHTML = rounded + "°";
+
+        // for temprature
+        const tempdeg=data.current.temp;
+        const kelvinTemp=273.15;
+        const degrees=tempdeg - kelvinTemp ;
+        const rounded=degrees.toFixed(0)
+        const temdegElement=document.getElementById('tem');
+        temdegElement.innerHTML=rounded+"°";
 
         if (degrees > 30) {
             document.getElementById("background").style.backgroundImage = 'linear-gradient(to bottom,#ff9933, #ff8000)';
@@ -158,36 +46,33 @@ var mainFunction=(city)=>{
     
 
         //for main
-        const main = data.weather[0].main;
-        // Display the weather condition in the HTML element with id "main"
+        const main = data.current.weather[0].main; 
+        const mainWithoutQuotes = main.slice(0,);
         const mainElement = document.getElementById('main');
-        mainElement.innerHTML = main;
+        mainElement.innerHTML = mainWithoutQuotes; 
 
         //real feels temprature
-        const feelsLikeKelvin = data.main.feels_like;
-        const feelsdegrees = feelsLikeKelvin - kelvinTemp;
+        const feelsLikeKelvin = data.current.feels_like;  
+        const feelsdegrees = feelsLikeKelvin - kelvinTemp; 
         const feelsrounded = feelsdegrees.toFixed(0);
-        // Display the "real feel" temperature in the HTML element with id "feels_like"
         const feelsElement = document.getElementById('feels_like');
-        feelsElement.innerHTML = `Real feel: ${feelsrounded}°`;
-        
-        
+        feelsElement.innerHTML =  `Real feel: ${feelsrounded}°`;
+
         //for humidity
-        const humidity = data.main.humidity;
         const humidityElement = document.getElementById('humidity');
-        humidityElement.innerHTML = `Humidity: ${humidity}%`;
+        humidityElement.innerHTML =  `Humidity: ${data.current.humidity}%`;
 
         //for windspeed
-        const windSpeed = data.wind.speed;
+        const windSpeed = data.current.wind_speed;
         const windspeedElement = document.getElementById('windspeed');
         windspeedElement.innerHTML = `Wind Speed: ${windSpeed} km/h`;
 
 
         //for current time and date and tyear
-        const timestamp = data.dt;
+        const timestamp = data.current.dt;
         const date = new Date(timestamp * 1000);
         const monthNames = [
-          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ];
         const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
         const dayOfMonth = date.getDate();
@@ -196,54 +81,169 @@ var mainFunction=(city)=>{
         const hours = date.getHours();
         const minutes = date.getMinutes();
         const ampm = hours >= 12 ? 'PM' : 'AM';
-        const formattedHours = hours % 12 || 12; 
+        const formattedHours = hours % 12 || 12; // Convert to 12-hour format
         const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${monthName} ${year} | Local time: ${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
         const datetimeElement = document.getElementById('datetime');
         datetimeElement.innerHTML = formattedDate;
-        
 
         //for sunrise
-        const sunriseTimestamp = data.sys.sunrise;
+        const sunriseTimestamp = data.current.sunrise;
         const sunriseDate = new Date(sunriseTimestamp * 1000);
         const options = {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true
-        };
+            hour: '2-digit',minute: '2-digit',hour12: true};
         const sunriseTimeFormatted = sunriseDate.toLocaleTimeString([], options);
         const sunriseElement = document.getElementById('sunrise');
         sunriseElement.innerHTML = `Rise: ${sunriseTimeFormatted}`;
-        const sunsetTimestamp = data.sys.sunset;
 
-        // for sunset
+        //for sunset
+        const sunsetTimestamp = data.current.sunset;
         const sunsetDate = new Date(sunsetTimestamp * 1000);
-        const sunsetTimeFormatted = sunsetDate.toLocaleTimeString([], options);
+        const options1 = {
+            hour: '2-digit',minute: '2-digit',hour12: true};
+        const sunsetTimeFormatted = sunsetDate.toLocaleTimeString([], options1);
         const sunsetElement = document.getElementById('sunset');
         sunsetElement.innerHTML = `Set: ${sunsetTimeFormatted}`;
-        
 
         //for image
-        const weatherIconCode = data.weather[0].icon;
+        const weatherIconCode = data.current.weather[0].icon;
         const imgElement = document.getElementById('imageIcon');
         imgElement.src = `http://openweathermap.org/img/wn/${weatherIconCode}.png`;
 
-        //for max tempraure
-        const maxTemperatureKelvin = data.main.temp_max;
-        const maxTemperatureCelsius = maxTemperatureKelvin - kelvinTemp;
-        const maxTemperatureElement = document.getElementById('high');
-        maxTemperatureElement.textContent = `High: ${maxTemperatureCelsius.toFixed(0)}°C`;
-        
-        //for min temrature
-        const minTemperatureKelvin = data.main.temp_min;
-        const minTemperatureCelsius = minTemperatureKelvin - kelvinTemp;
-        const minTemperatureElement = document.getElementById('low');
-        minTemperatureElement.textContent = `Low : ${minTemperatureCelsius.toFixed(0)}°C`;
+        //for hourly data
+        fetchAndDisplayHourlyData(data);
 
+        //for daily data
+        fetchAndDisplayDailyData(data);
+
+        fetchAndDisplayMaxTemperature(data);
+        fetchAndDisplayMinTemperature(data);
+
+        
     })
     .catch(error => {
         console.log("Error occurred:", error);
     });
 }
+
+// const apikey = '0e707606af8a465626142a75310654ec';//this is free key
+// // var mainFunction=(city)=>{
+// //     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+// //     .then(response => {
+// //         if (!response.ok) {
+// //             throw new Error("Network response was not ok!");
+// //         }
+// //         return response.json();
+// //     })
+// //     .then(data => {
+// //         console.log(data);
+// //         // For timezone
+// //         const time = data.timezone;
+// //         const timezoneElement = document.getElementById('timeZone'); 
+// //         timezoneElement.innerHTML = city;
+        
+// //         //for temprature
+// //         const tempdeg = data.main.temp;
+// //         const kelvinTemp = 273.15;
+// //         const degrees = tempdeg - kelvinTemp;
+// //         const rounded = degrees.toFixed(0);
+// //         // Display the temperature in the HTML element with id "tem"
+// //         const temdegElement = document.getElementById('tem');
+// //         temdegElement.innerHTML = rounded + "°";
+
+// //         if (degrees > 30) {
+// //             document.getElementById("background").style.backgroundImage = 'linear-gradient(to bottom,#ff9933, #ff8000)';
+// //         } else {
+// //             document.getElementById('background').style.backgroundImage = '';
+// //         }
+    
+
+// //         //for main
+// //         const main = data.weather[0].main;
+// //         // Display the weather condition in the HTML element with id "main"
+// //         const mainElement = document.getElementById('main');
+// //         mainElement.innerHTML = main;
+
+// //         //real feels temprature
+// //         const feelsLikeKelvin = data.main.feels_like;
+// //         const feelsdegrees = feelsLikeKelvin - kelvinTemp;
+// //         const feelsrounded = feelsdegrees.toFixed(0);
+// //         // Display the "real feel" temperature in the HTML element with id "feels_like"
+// //         const feelsElement = document.getElementById('feels_like');
+// //         feelsElement.innerHTML = `Real feel: ${feelsrounded}°`;
+        
+        
+// //         //for humidity
+// //         const humidity = data.main.humidity;
+// //         const humidityElement = document.getElementById('humidity');
+// //         humidityElement.innerHTML = `Humidity: ${humidity}%`;
+
+// //         //for windspeed
+// //         const windSpeed = data.wind.speed;
+// //         const windspeedElement = document.getElementById('windspeed');
+// //         windspeedElement.innerHTML = `Wind Speed: ${windSpeed} km/h`;
+
+
+// //         //for current time and date and tyear
+// //         const timestamp = data.dt;
+// //         const date = new Date(timestamp * 1000);
+// //         const monthNames = [
+// //           'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+// //         ];
+// //         const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+// //         const dayOfMonth = date.getDate();
+// //         const year = date.getFullYear();
+// //         const monthName = monthNames[date.getMonth()];
+// //         const hours = date.getHours();
+// //         const minutes = date.getMinutes();
+// //         const ampm = hours >= 12 ? 'PM' : 'AM';
+// //         const formattedHours = hours % 12 || 12; 
+// //         const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${monthName} ${year} | Local time: ${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+// //         const datetimeElement = document.getElementById('datetime');
+// //         datetimeElement.innerHTML = formattedDate;
+        
+
+// //         //for sunrise
+// //         const sunriseTimestamp = data.sys.sunrise;
+// //         const sunriseDate = new Date(sunriseTimestamp * 1000);
+// //         const options = {
+// //           hour: '2-digit',
+// //           minute: '2-digit',
+// //           hour12: true
+// //         };
+// //         const sunriseTimeFormatted = sunriseDate.toLocaleTimeString([], options);
+// //         const sunriseElement = document.getElementById('sunrise');
+// //         sunriseElement.innerHTML = `Rise: ${sunriseTimeFormatted}`;
+// //         const sunsetTimestamp = data.sys.sunset;
+
+// //         // for sunset
+// //         const sunsetDate = new Date(sunsetTimestamp * 1000);
+// //         const sunsetTimeFormatted = sunsetDate.toLocaleTimeString([], options);
+// //         const sunsetElement = document.getElementById('sunset');
+// //         sunsetElement.innerHTML = `Set: ${sunsetTimeFormatted}`;
+        
+
+// //         //for image
+// //         const weatherIconCode = data.weather[0].icon;
+// //         const imgElement = document.getElementById('imageIcon');
+// //         imgElement.src = `http://openweathermap.org/img/wn/${weatherIconCode}.png`;
+
+// //         //for max tempraure
+// //         const maxTemperatureKelvin = data.main.temp_max;
+// //         const maxTemperatureCelsius = maxTemperatureKelvin - kelvinTemp;
+// //         const maxTemperatureElement = document.getElementById('high');
+// //         maxTemperatureElement.textContent = `High: ${maxTemperatureCelsius.toFixed(0)}°C`;
+        
+// //         //for min temrature
+// //         const minTemperatureKelvin = data.main.temp_min;
+// //         const minTemperatureCelsius = minTemperatureKelvin - kelvinTemp;
+// //         const minTemperatureElement = document.getElementById('low');
+// //         minTemperatureElement.textContent = `Low : ${minTemperatureCelsius.toFixed(0)}°C`;
+
+// //     })
+// //     .catch(error => {
+// //         console.log("Error occurred:", error);
+// //     });
+// // }
 
 const cityInput = document.getElementById('cityinput');
 // Function to perform the search    
