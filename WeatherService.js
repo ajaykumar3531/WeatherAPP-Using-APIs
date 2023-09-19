@@ -3,6 +3,17 @@
  
 const apikey = 'c53550ab28e638339d8c8513bebe03b9'; //this is premium key which is exceeded for today useage
 var mainFunction=(city)=>{
+    document.getElementById('timeZone').innerHTML = '';
+    document.getElementById('tem').innerHTML = '';
+    document.getElementById('main').innerHTML = '';
+    document.getElementById('feels_like').innerHTML = '';
+    document.getElementById('humidity').innerHTML = '';
+    document.getElementById('windspeed').innerHTML = '';
+    document.getElementById('datetime').innerHTML = '';
+    document.getElementById('sunrise').innerHTML = '';
+    document.getElementById('sunset').innerHTML = '';
+    document.getElementById('imageIcon').src = '';
+    document.getElementById('cityinput').value='';
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
     .then(response => {
         if (!response.ok) {
